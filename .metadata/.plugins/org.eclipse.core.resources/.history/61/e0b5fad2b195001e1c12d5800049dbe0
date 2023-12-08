@@ -1,0 +1,47 @@
+package com.hr.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.hr.dto.DepartmentsPojo;
+import com.hr.service.DepartmentService;
+
+@RestController
+@RequestMapping("/api/v1/department")
+public class DepartmentsController {
+	@Autowired
+	DepartmentService  departmentsService;
+	
+	@PostMapping
+	public String addnewDepartment(DepartmentsPojo departmentsPojo) {
+		return departmentsService.addnewDepartment(departmentsPojo);
+		
+	}
+	@PutMapping
+	public String updatedepartmentEntity(DepartmentsPojo departmentsPojo) {
+		return departmentsService.updatedepartmentEntity(departmentsPojo);
+		
+	}
+	@DeleteMapping("/{departmentId}")
+	public String deletedepartmentById(@PathVariable("departmentId") int departmentId) {
+		return departmentsService.deletedepartmentById(departmentId);
+		
+	}
+	@GetMapping("/{empid}")
+	public List<DepartmentsPojo> getallDepartmentsWithEmployees(){
+		List<DepartmentsPojo>departmentsPojoList= departmentsService.getallDepartmentsWithEmployees();
+		return departmentsPojoList;
+		
+	}
+	
+	
+	
+
+}

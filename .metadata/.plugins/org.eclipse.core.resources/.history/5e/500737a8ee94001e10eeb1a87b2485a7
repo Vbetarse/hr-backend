@@ -1,0 +1,42 @@
+package com.hr.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hr.dto.JobsPojo;
+
+@SpringBootTest
+public class BookSercviceImpl1Test {
+	@Autowired
+	JobsService jobService;
+	
+	@Test
+	public void testAllJob() {
+		List<JobsPojo> expectedJobs = new ArrayList<JobsPojo>();
+		expectedJobs.add(new JobsPojo("101","Techinical",1222,2321));
+		List<JobsPojo> actualJob=jobService.getJobDetails();
+		
+		assertEquals(exprected.)
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

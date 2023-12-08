@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.hr.entity.JobsEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.hr.service.JobsService"/>
+    <fullyQualifiedTypeName name="com.hr.dao.JobsRepository"/>
+    <fullyQualifiedTypeName name="com.hr.dto.JobsPojo"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.BeanUtils"/>
+</qualifiedTypeNameHistroy>

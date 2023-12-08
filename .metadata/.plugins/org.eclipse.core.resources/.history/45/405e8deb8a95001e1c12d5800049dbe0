@@ -1,0 +1,16 @@
+package com.hr.service;
+
+import org.springframework.stereotype.Service;
+
+import com.hr.dto.DepartmentsPojo;
+
+@Service
+public interface DepartmentService {
+	public String addnewDepartment(DepartmentsPojo departmentsPojo);
+	public String updatedepartmentEntity(DepartmentsPojo departmentsPojo);
+	public String deletedepartmentById(int departmentId);
+	
+	
+	
+
+}

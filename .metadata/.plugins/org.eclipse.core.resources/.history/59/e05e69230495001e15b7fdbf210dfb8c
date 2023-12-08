@@ -1,0 +1,51 @@
+package com.hr.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hr.dto.JobsPojo;
+import com.hr.entity.JobsEntity;
+import com.hr.service.JobsService;
+
+
+@RestController
+@RequestMapping("/api/v1/jobs")
+public class JobsController {
+	@Autowired
+	   JobsService jobdetails;
+	
+	@PostMapping("/add")
+	public String addnewJob(@RequestBody JobsPojo jobspojos){
+		String job = jobdetails.addnewJob(jobspojos);
+		return job;
+	}
+	@PutMapping()
+	public String updateJobsEntity(@RequestBody JobsPojo jobsPojo) {
+		return jobdetails.updateJobsEntity(jobsPojo);
+	}
+	@GetMapping()
+	public List<JobsPojo> getJobDetails(){
+		List<JobsPojo>jobPojoList= jobdetails.getJobDetails();
+		return jobPojoList;
+	}
+	@DeleteMapping("/{jobId}")
+	public String deleteJobsById(@PathVariable("jobId") String jobId ) {
+		return jobdetails.deleteJobsById(jobId);
+		
+	}
+	
+	
+	
+
+}
+	
+

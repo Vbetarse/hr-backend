@@ -1,0 +1,23 @@
+package com.hr.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class JobsPojo {
+	private String jobId;
+	private String jobTitle;
+	private double minSalary;
+	private double maxSalary;
+	@Override
+	public String toString() {
+		return "JobsPojo [jobId=" + jobId + ", jobTitle=" + jobTitle + ", minSalary=" + minSalary + ", maxSalary="
+				+ maxSalary + "]";
+	}
+	
+}

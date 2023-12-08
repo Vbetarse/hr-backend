@@ -1,0 +1,78 @@
+package com.hr.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hr.dao.JobsRepository;
+import com.hr.dto.JobsPojo;
+import com.hr.entity.JobsEntity;
+
+@Service
+public class JobsServiceImpl implements JobsService {
+	@Autowired
+	JobsRepository jobdao;
+	
+	List<JobsEntity> jobsentityList = new ArrayList<>();
+	
+	@Override
+	public String addnewJob(JobsPojo jobspojo) {
+		JobsEntity jobsEntity = new JobsEntity();
+		BeanUtils.copyProperties(jobspojo, jobsEntity);
+		jobdao.save(jobsEntity);
+		return "Record Created Successfully";
+	}
+
+	@Override
+	public String updateJobsEntity(JobsPojo jobsPojo) {
+		JobsEntity jobsEntity=new JobsEntity();
+		BeanUtils.copyProperties(jobsPojo, jobsEntity);
+		jobdao.save(jobsEntity);
+		return "Record Updated";
+		
+	}
+	@Override
+	public List<JobsPojo> getJobDetails() {
+		List<JobsEntity> jobEntityList = jobdao.findAll();
+		for(JobsEntity j:jobEntityList)
+			System.out.println(j);
+		List<JobsPojo> jobPojoList = new ArrayList<JobsPojo>();
+		for(JobsEntity eachJobsEntity: jobEntityList) {
+			JobsPojo eachJobsPojo = new JobsPojo();
+			BeanUtils.copyProperties(eachJobsEntity,eachJobsPojo);
+			jobPojoList.add(eachJobsPojo);
+			
+		}
+//		System.out.println(jobPojoList);
+		return jobPojoList;
+	}
+
+	@Override
+	public String deleteJobsById(String jobId) {
+		Optional<JobsEntity> jobsEntity = jobdao.findById(jobId);
+		JobsPojo jobsPojo = new JobsPojo();
+		BeanUtils.copyProperties(jobsEntity.get(), jobsPojo);
+		if(jobsPojo!=null)
+			jobdao.deleteById(jobId);
+		return "Record Deleted Successfully";
+	}
+
+	@Override
+	public List<JobsEntity> Updatesalary(String jobId, double minSalary, double maxSalary)  {
+		Optional<JobsEntity> jobsEntityList =jobdao.findById(jobId);
+		if(jobsEntityList.isPresent()) {
+			JobsEntity jobsEntity = jobsEntityList.get();
+			jobsEntity.setMinSalary(minSalary);
+			jobsEntity.setMaxSalary(maxSalary);
+			jobdao.save(jobsEntity);
+		}
+		return "jobs";
+	}
+
+
+}
+

@@ -1,0 +1,50 @@
+package com.hr.service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.validator.constraints.ModCheck;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.hr.dto.JobsPojo;
+
+@SpringBootTest
+public class BookSercviceImpl1Test {
+	
+	@ModCheck
+	JobsService jobService;
+	@InjectMocks
+	RegionsService RegionsService1
+	
+	@Test
+	public void testAllJob() {
+		List<JobsPojo> stubsdata = new ArrayList<JobsPojo>();
+		stubsdata.add(new JobsPojo("101","Techinical",1222,2321));
+		when(JobDetailsList) then List
+		List<JobsPojo> actualJob=jobService.getJobDetails();
+		
+		assertEquals(expectedJobs.size(),actualJob.size());
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
